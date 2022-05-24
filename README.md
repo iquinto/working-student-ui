@@ -1,5 +1,9 @@
-# working-student-ui
-<i>frontend</i>
+# UI
+<i>working student ui
+</i>
+
+## Installation
+
 
 ## Docker build 
 ```
