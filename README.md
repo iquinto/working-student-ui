@@ -2,7 +2,12 @@
 <i>working student ui
 </i>
 
+## Requirements
+Node.js v16.2.0
+* [Node.js version >= 16.2.0]([https://spring.io/projects/spring-boot](https://nodejs.org/en/))
+
 ## Installation
+
 
 
 ## Docker build 
