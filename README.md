@@ -4,7 +4,11 @@
 
 ## Requirements
 Node.js v16.2.0
-* [Node.js version >= 16.2.0]([https://spring.io/projects/spring-boot](https://nodejs.org/en/))
+* [Node.js version >= 16.2.0]([https://spring.io/projects/spring-boot](https://nodejs.org/en/)
+* [Spring Boot](https://spring.io/projects/spring-boot)
+* [Vue](https://vuejs.org/)
+* [PostgreSQL](https://www.postgresql.org/)
+* [Docker](https://www.docker.com/)
 
 ## Installation
 
