@@ -1,5 +1,5 @@
-# working student ui
-<i>Frontend</i>
+# Working Student UI (<i>Frontend</i>)
+
 
 ## Requirements
 * [Node.js version >= 16.2.0](https://nodejs.org/en/)
@@ -8,7 +8,8 @@
 
 ## Installation
 * Download or clone the following repository
-* Using WebStorm Javascript IDE (or similar IDEA) open or import the project. For Webstorm IDE user ->  select File > Open > […/path/of/ working-student-ui].
+* Using WebStorm Javascript IDE (or similar IDEA),  open or import the project. 
+ <br>For Webstorm IDE user ->  select File > Open > […/path/of/ working-student-ui].
 * Using the incorporated terminal run ```npm install``` to download and install dependencies. It could be possible that the following line must executed if error persists:
  ```
 npm install primevue@^3.12.5 --save
