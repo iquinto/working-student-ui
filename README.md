@@ -5,10 +5,10 @@
 ## Requirements
 * [Node.js version >= 16.2.0](https://nodejs.org/en/)
 * [WebStorm IDEA](https://www.jetbrains.com/webstorm/) or similar
-* [PostgreSQL](https://www.postgresql.org/)
-* [Docker](https://www.docker.com/)
+* [Docker/Docker Desktop](https://www.docker.com/)
 
 ## Installation
+* Download or clone the following repository
 
 
 
