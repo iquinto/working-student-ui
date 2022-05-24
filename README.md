@@ -1,6 +1,5 @@
-# UI
-<i>working student ui
-</i>
+# working student ui
+<i>Frontend</i>
 
 ## Requirements
 * [Node.js version >= 16.2.0](https://nodejs.org/en/)
