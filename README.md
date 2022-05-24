@@ -33,7 +33,6 @@ docker push iquinto/workingstudentui
 ```
 
 ### Docker run 
-(this will fail beacuse the database for docker profile is not configured)
 ```
 docker run -it -p 8080:80 --rm --name workingstudentui workingstudentui
 ```
