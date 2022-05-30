@@ -1,7 +1,23 @@
 <template>
-  <div class="row theme-title">
-    <div class="col-sm-12">
+  <div class="row theme-header-title">
+    <div class="col-sm-12 theme-title float-effect" :style="{backgroundImage: banner}">
+      <nav aria-label="breadcrumb" style="background-color: transparent !important;">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <router-link :to="'/home'" class="inactive-link">
+              Inicio
+            </router-link>
+          </li>
+          <li class="breadcrumb-item">
+            <router-link :to="'/profile/' + currentUser.username" class="inactive-link">
+              Mi perfil
+            </router-link>
+          </li>
+          <li class="breadcrumb-item" aria-current="page"><span class="active-link">Empleo</span></li>
+        </ol>
+      </nav>
       <h1 v-if="!successful">Publicar una oferta de trabajo</h1>
+
     </div>
   </div>
 
@@ -161,6 +177,10 @@ export default {
     currentUser() {
       const user = this.$store.state.auth.user;
       return user;
+    },
+
+    banner() {
+      return  'url(' + require('@/assets/banner_job_post.jpg') + ')' ;
     },
   },
   mounted() {

@@ -1,6 +1,6 @@
 <template>
   <div class="row theme-header-title">
-    <div class="col-sm-12 theme-title float-effect">
+    <div class="col-sm-12 theme-title float-effect" :style="{backgroundImage: banner}">
       <nav aria-label="breadcrumb" style="background-color: transparent !important;">
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
@@ -248,6 +248,10 @@ export default {
 
     currentJobId() {
       return this.$route.params.id;
+    },
+
+    banner() {
+      return  'url(' + require('@/assets/banner_job_post.jpg') + ')' ;
     },
   },
 
