@@ -264,6 +264,9 @@
           <hr>
           <p> <span>Estado:</span> {{selectedReservation.accepted ? 'Aceptado' : 'Pendiente'}}</p>
 
+          <p> <span>Caduca en :</span> {{selectedReservation.endDate }}</p>
+
+
           <p style="text-align: left"> <span>Horarios: </span></p>
 
             <table class="table table-striped reservation-table">
