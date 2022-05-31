@@ -1,4 +1,12 @@
 <template>
+
+  <loading v-model:active="isLoading"
+           :can-cancel="true"
+           :is-full-page="fullPage"
+           color="#d2232a"
+           loader="bars"
+  />
+
   <div class="row theme-header-title">
     <div class="col-sm-12 theme-title float-effect">
       <nav aria-label="breadcrumb" style="background-color: transparent !important;">
@@ -121,14 +129,21 @@
 <script>
 import ScheduleDataService from "../../services/ScheduleDataService";
 import ReservationDataService from "../../services/ReservationDataService";
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 
 export default {
   name: "ReservationCreate",
   props: {
     username: String
   },
+  components: {
+    Loading
+  },
   data() {
     return {
+      isLoading: false,
+      fullPage: true,
       defaultClass: 'personal-checkbox-student',
       user: "",
       schedules: [],
@@ -202,8 +217,11 @@ export default {
         startDate: this.extraData.startDate,
         numberOfWeeks: this.extraData.numberOfWeeks
       }
+      this.isLoading = true;
+
       ReservationDataService.save(this.currentUser.username, data).then(
           (response) => {
+            this.isLoading = false;
             this.$router.push("/profile/" + this.currentUser.username );
             this.$notify({ type: "success",  text: response.data.message.toString()});          },
           (error) => {
