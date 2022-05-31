@@ -1,4 +1,11 @@
 <template>
+  <loading v-model:active="isLoading"
+           :can-cancel="true"
+           :is-full-page="fullPage"
+           color="#d2232a"
+           loader="bars"
+  />
+
   <div class="row">
     <div class="col-sm-12 profile-card">
       <div class="card float-effect" style="padding: 10px 30px;">
@@ -357,11 +364,14 @@ import ReservationDataService from "../../services/ReservationDataService";
 import Rating from 'primevue/rating';
 import 'primevue/resources/primevue.min.css'
 import 'primevue/resources/themes/saga-blue/theme.css'
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 
 export default {
   name: "StudentListContracted",
   components: {
-    'p-rating': Rating
+    'p-rating': Rating,
+    Loading
   },
   props: {
     username: String
@@ -378,7 +388,9 @@ export default {
       selectedReservation: { employer:{},student:{}, schedules:[]},
       reservations: [],
       finished: true,
-      comment: null
+      comment: null,
+      isLoading: false,
+      fullPage: true,
     };
   },
   computed: {
@@ -425,8 +437,10 @@ export default {
     },
 
     deleteReservation(){
+      this.isLoading = true;
       ReservationDataService.delete(this.idToDelete, this.rate, this.comment).then(
           (response) => {
+            this.isLoading = false;
             this.myCallback();
             this.$notify({ type: "success",  text: response.data.message.toString()});
             this.$emit("refreshevent")
@@ -436,6 +450,7 @@ export default {
 
           },
           (error) => {
+            this.isLoading = false;
             this.students =
                 (error.response &&
                     error.response.data &&
@@ -448,12 +463,15 @@ export default {
     },
 
     acceptReservation(){
+      this.isLoading = true;
       ReservationDataService.accept(this.idToAcceptOrReject).then(
           (response) => {
+            this.isLoading = false;
             this.myCallback();
             this.$notify({ type: "success",  text: response.data.message.toString()});
           },
           (error) => {
+            this.isLoading = false;
             this.students =
                 (error.response &&
                     error.response.data &&
@@ -465,12 +483,15 @@ export default {
     },
 
     rejectReservation(){
+      this.isLoading = true;
       ReservationDataService.reject(this.idToAcceptOrReject).then(
           (response) => {
+            this.isLoading = false;
             this.myCallback();
             this.$notify({ type: "success",  text: response.data.message.toString()});
           },
           (error) => {
+            this.isLoading = false;
             this.students =
                 (error.response &&
                     error.response.data &&
