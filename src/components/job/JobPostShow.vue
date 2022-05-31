@@ -1,4 +1,10 @@
 <template>
+  <loading v-model:active="isLoading"
+           :can-cancel="true"
+           :is-full-page="fullPage"
+           color="#d2232a"
+           loader="bars"
+  />
   <div class="row theme-header-title">
     <div class="col-sm-12 theme-title float-effect" :style="{backgroundImage: banner}">
       <nav aria-label="breadcrumb" style="background-color: transparent !important;">
@@ -223,12 +229,18 @@
 
 import JobPostDataService from "../../services/JobPostDataService";
 import ResumeDataService from "../../services/ResumeDataService";
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 
 export default {
   name: "JobShow",
-
+  components: {
+    Loading
+  },
   data() {
     return {
+      isLoading: false,
+      fullPage: true,
       selected: 0,
       cvImg: require('@/assets/cv-logo.png'),
       employer: {
@@ -296,22 +308,23 @@ export default {
 
 
     sendCV(){
-
+      this.isLoading = true;
       let data = {
         idPost : this.currentJobId,
         idResume : this.selected
       }
-
       console.log(data.idPost)
       console.log(data.idResume)
 
       JobPostDataService.sendCV(data).then(
           (response) => {
+            this.isLoading = false;
             let redirect = "/job/list/" + this.job.type
             this.$router.push(redirect);
             this.$notify({ type: "success",  text: response.data.message});
           },
           (error) => {
+            this.isLoading = false;
             this.message =
                 (error.response &&
                     error.response.data &&
