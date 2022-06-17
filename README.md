@@ -45,4 +45,16 @@ docker rm -vf $(docker ps -a -q)
 docker rmi -f $(docker images -a -q) 
 ```
 
+
+## AWS + Docker 
+
+```
+docker build -t workingstudentui .
+docker tag workingstudentui iquinto/ws-front
+docker push iquinto/ws-front
+ssh -i "**file.pem" ubuntu@***** // use public ip
+sudo docker run -it -p 80:80 --rm --name  workingstudentui iquinto/ws-front
+```
+ 
+
  
